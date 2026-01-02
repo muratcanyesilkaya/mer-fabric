@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merfabric TexTile </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#home" class="logo">
+                    <span class="logo-text-yellow">Mer</span>
+                    <span class="logo-text-orange">Fabric</span>
+                    <span class="logo-registered">®</span>
+                </a>
+                <nav class="nav-desktop">
+                    <a data-key="home" href="#home" class="nav-link active">Home</a>
+                    <a data-key="about" href="#about" class="nav-link">About</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#certificates" class="nav-link">certificates</a>
+                    <a href="#news" class="nav-link">news</a>
+                    <a href="#teams" class="nav-link">Teams</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <div class="language-dropdown-container">
+                        <button id="languageToggle" class="language-toggle">
+                            <i data-lucide="globe"></i>
+                            <span id="language-text">EN</span>
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div id="languageMenu" class="language-dropdown-menu">
+                            <a href="#" class="lang-option" data-lang="en">English</a>
+                            <a href="#" class="lang-option" data-lang="tr">Türkçe</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="nav-mobile">
+                    <button id="languageToggleMobile" class="language-toggle">
+                        <i data-lucide="globe"></i>
+                        <span>EN</span>
+                    </button>
+                    <button id="menuToggle" class="menu-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#products" class="nav-link">Products</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span class="text-yellow">Consistency in Every Fabric</span>
+                    <br>
+                    <span class="text-orange">Excellence in Every Color.</span>
+                </h1>
+                <!--kaldırıldı <p>Lead fashion with our premium fabrics produced using innovative technologies. We have been serving customers worldwide for over 25 years.</p> -->
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Explore Products</a>
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll Down</span>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/3951389/pexels-photo-3951389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                            alt="Textile factory">
+                    </div>
+                    <div class="about-content">
+                        <h2>About Us</h2>
+                        “In woven fabrics, together with our dyehouse partner a <a href="https://www.halmertekstil.com/"
+                            target="_blank" class="link">Halmer Tekstil </a>
+                        we can offer a wide range of production options,
+                        including digital and rotary printing (both reactive and pigment),
+                        plain dyeing, PFD, PFP, and optic white
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <i data-lucide="shield"></i>
+                                <div class="stat-value">5000+</div>
+                                <div class="stat-label">uning desing</div>
+                            </div>
+                            <div class="stat-card">
+                                <i data-lucide="award"></i>
+                                <div class="stat-value">20+</div>
+                                <div class="stat-label">Export Countries</div>
+                            </div>
+                            <div class="stat-card">
+                                <i data-lucide="users"></i>
+                                <div class="stat-value">100+</div>
+                                <div class="stat-label">Happy Clients</div>
+                            </div>
+                        </div>
+
+                        <a href="#contact" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="products" class="products">
+            <div class="container">
+                <h2>Our Product Collection</h2>
+                <p class="section-subtitle">Discover our diverse, high-quality, and modern fabrics. We offer solutions
+                    for every need.</p>
+
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="cotton">Cotton</button>
+                    <button class="category-btn" data-category="polyester">Polyester Blend</button>
+                    <button class="category-btn" data-category="linen">Linen</button>
+                    <button class="category-btn" data-category="Lyocell">Lyocell</button>
+
+                </div>
+
+                <div class="products-grid" id="productsGrid"></div>
+
+
+            </div>
+            <!-- Image Modal -->
+            <div id="imageModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="modalImage">
+            </div>
+        </section>
+
+
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p data-key="services-p-1" class="section-subtitle">We offer all the services you need in the textile industry under one roof.
+                </p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i data-lucide="factory"></i>
+                        <h3>Design Solutions</h3>
+                        <p>We produce high-quality fabrics in our modern facilities using the latest technologies and
+                            innovative methods to exceed customer expectations.</p>
+                    </div>
+                    <div class="service-card">
+                        <i data-lucide="bar-chart-4"></i>
+                        <h3>Production Offers</h3>
+                        <p>We specialize in digital print, rotary print (pigment and reactive), plain dyeing, as well as
+                            PFD and PFP fabrics.</p>
+                    </div>
+                    <div class="service-card">
+                        <i data-lucide="truck"></i>
+                        <h3>Distribution & Logistics</h3>
+                        <p>We ensure timely and secure delivery of your products through our global logistics network,
+                            guaranteeing fast and reliable shipment.</p>
+                    </div>
+                    <div class="service-card">
+                        <i data-lucide="globe"></i>
+                        <h3>Export Services</h3>
+                        <p>We offer export solutions that give you a competitive advantage in the global market and help
+                            your products reach international audiences.</p>
+                    </div>
+
+                </div>
+
+                <div class="cta-box">
+                    <h3>Contact us for your custom projects</h3>
+                    <p>We provide special solutions for all your textile needs. Contact our expert team now to bring
+                        your projects to life.</p>
+                    <a href="#contact" class="btn btn-white">Contact Us Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="certificates">
+            <div class="container">
+                <h2>Our Certifications</h2>
+                <p class="section-subtitle">Inasdfsdgfdfhfgjhfgjjkjhd awards showcasing our quality standards.
+                </p>
+
+                <div class="certificates-slider">
+                    <div class="certificates-track">
+                        <div class="certificate-card" data-pdf="foto/9001 ENG.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/iso-9001-2015.png" style="max-width: 80px;">
+                                <i class="icon-shield-check"></i>
+                            </div>
+                            <h3>ISO 9001:2015</h3>
+                            <p>Our Quality Management System certificate demonstrates our dedication to continuous
+                                improvement.</p>
+                        </div>
+
+                        <div class="certificate-card" data-pdf="pdfs/iso9001.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/csm_Logo_OEKO-TEX_green_694a322a50.png" style="max-width: 80px;">
+                                <i class="icon-leaf"></i>
+                            </div>
+                            <h3>OEKO-TEX Standard 100</h3>
+                            <p>A certification ensuring that our textile products do not contain any harmful substances
+                                to human health..
+                            </p>
+                        </div>
+
+                        <div class="certificate-card" data-pdf="pdfs/iso9001.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/global-recycled-standard_1690377349491-1690377354334.png"
+                                    style="max-width: 80px;">
+                                <i class="icon-refresh-cw"></i>
+                            </div>
+                            <h3>GRS Sertifikası</h3>
+                            <p>With the Global Recycled Standard certification, we ensure sustainable production and the
+                                use of recycled content.</p>
+                        </div>
+
+                        <div class="certificate-card" data-pdf="pdfs/iso9001.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/Global_Organic_Textile_Standard_logo.jpg" style="max-width: 90px;">
+                                <i class="icon-award"></i>
+                            </div>
+                            <h3>GOTS Sertifikası</h3>
+                            <p>Our Global Organic Textile Standard certification for organic textile production.</p>
+                        </div>
+
+                        <div class="certificate-card" data-pdf="pdfs/iso9001.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/ISO-14001.png" style="max-width: 90px;">
+                                <i class="icon-globe"></i>
+                            </div>
+                            <h3>ISO 14001:2015</h3>
+                            <p>Our Environmental Management System certificate demonstrates our dedication to
+                                environmental responsibility.</p>
+                        </div>
+
+                        <div class="certificate-card" data-pdf="pdfs/iso9001.pdf">
+                            <div class="certificate-icon">
+                                <img src="foto/organic-100-content-standard7675.logowik.com.jpg"
+                                    style="max-width: 110px;">
+                                <i class="icon-users"></i>
+                            </div>
+                            <h3>ORGANIC 100 Sertifikası</h3>
+                            <p>Our Organic 100 certification guarantees that our products are made from 100% certified
+                                organic materials.</p>
+                        </div>
+                    </div>
+
+                    <div class="slider-arrows">
+                        <div class="arrow prev">❮</div>
+                        <div class="arrow next">❯</div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <div class="slider-dot active"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="news">
+            <div class="container">
+                <h2>Our News</h2>
+                <p class="section-subtitle">The latest developments, innovations, and industry news from our company.
+                </p>
+
+                <div class="news-grid owl-carousel">
+
+                    <div class="news-card item">
+                        <div class="news-image">
+                            <img src="foto/Halmer Linkedin (17).jpg" alt="Ödül töreni">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">11 Haziran 2025</div>
+                            <h3 class="news-title">Sierra Leone Business and Investment Day</h3>
+                            <p class="news-excerpt">At Sierra Leone Trade & Investment Day, our printed fabrics were
+                                proudly chosen by the delegation, turning our textiles into a bridge between cultures.
+                                We’re honored to create moments that connect people through design and dialogue.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="news-card item">
+                        <div class="news-image">
+                            <img src="foto/34.jpg" alt="Sürdürülebilir üretim">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">5-7 Mart 2025</div>
+                            <h3 class="news-title">Mer Fabric at Texhibition Istanbul!</h3>
+                            <p class="news-excerpt">We are delighted to have participated in Texhibition İstanbul Kumaş
+                                İplik ve Tekstil Aksesuarları Fuarı and had the opportunity to connect with industry
+                                professionals, designers, and business partners. The fair was a great success, filled
+                                with inspiring meetings and valuable collaborations!</p>
+
+                        </div>
+                    </div>
+
+                    <div class="news-card item">
+                        <div class="news-image">
+                            <img src="foto/1734684731679.jpg" alt="Ödül töreni">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">17 Aralık 2024</div>
+                            <h3 class="news-title"> MerFabric Annual Management Review Meeting </h3>
+                            <p class="news-excerpt">As we leave 2024 behind, we took a comprehensive look at our
+                                company’s performance and shaped our strategic plans for the future. This meeting
+                                provided a valuable opportunity to celebrate our successes, identify areas for
+                                improvement, and solidify our goals for 2025.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="news-card item">
+                        <div class="news-image">
+                            <img src="foto/1727436738044.jpg" alt="Uluslararası fuar">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-date">21 Eylül 2024</div>
+                            <h3 class="news-title">Industry Forum</h3>
+                            <p class="news-excerpt">At MerFabric, we had the pleasure of joining industry leaders at the
+                                30th Textile Night. It was an evening full of fun, where we enjoyed the lively
+                                atmosphere and built valuable connections for future collaborations. We are grateful to
+                                have been part of this memorable event, and a big thank you to all involved!</p>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id='teams' class="teams-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">TEAMS</h2>
+                    <p class="section-subtitle">We offer you the highest quality service with our expert staff in the
+                        textile industry.</p>
+                </div>
+
+                <div class="teams-grid">
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/mertkivrak.jpg" alt="Mert Kıvrak">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/mert-kivrak-ba9a7497/" class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:mertkivrak@halmer.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">Mert Kıvrak</h3>
+                            <p class="member-position">CO-FOUNDER</p>
+                            <p class="member-description">Our general manager who guides the company with strategic
+                                vision and drives success.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/merveavdan.jpg" alt="Merve Avdan">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/merve-kivrak-avdan-9a019327/"
+                                        class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:merveavdan@halmer.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">Merve Avdan</h3>
+                            <p class="member-position">CO-FOUNDER</p>
+                            <p class="member-description">Our Co-Founder, shaping the company’s vision and laying the
+                                foundation for sustainable growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/seckin.jpg" alt="Seçkin seckin-kahveciler">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/seckin-kahveciler/?originalSubdomain=tr"
+                                        class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:seckinkahvecilerk@halmer.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">Seçkin Kahveciler</h3>
+                            <p class="member-position">Sales Marketing Manager </p>
+                            <p class="member-description">Our manager who supports achieving goals and strengthens team
+                                motivation.</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/gül.jpg" alt="Gül Baloğlu">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/g%C3%BCl-balo%C4%9Flu-37261945/"
+                                        class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="gülbaloglu" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">Gül Baloğlu</h3>
+                            <p class="member-position">customer representative</p>
+                            <p class="member-description">The representative who resolves issues quickly and puts
+                                customer satisfaction first.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/fulin.jpg" alt="fulin Demirci">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/fulin-demirci-2626b6191/" class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:fulindemirci@halmer.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">fulin Demirci</h3>
+                            <p class="member-position">customer representative</p>
+                            <p class="member-description">Our representative who prioritizes customer experience and
+                                strengthens our relationships.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="card-image">
+                            <img src="foto/özge.jpg" alt="Özge Özkan">
+                            <div class="card-overlay">
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/%C3%B6zge-%C3%B6zkan-397098231/"
+                                        class="social-link">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="mailto:ozgeozkan@halmer.com" class="social-link">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="member-name">Özge Özkan</h3>
+                            <p class="member-position">Designer</p>
+                            <p class="member-description">Our designer who gives our brand its visual identity and
+                                shapes our projects with creativity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p class="section-subtitle">Have questions? Contact us and we’ll get back to you as soon as possible.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" autocomplete="off" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i data-lucide="phone"></i>
+                            <div>
+                                <h3>Phone Number</h3>
+                                <a href="tel:+902121234567">+90 (0258) 269 28 20</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="mail"></i>
+                            <div>
+                                <h3>Your Email</h3>
+                                <a href="mailto:info@textile.com">info@textile.com</a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="map-pin"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p>OSB Mah. Tanju Beştaş Cad. No:15, D:1, 20330 Honaz/Denizli</p>
+                            </div>
+                        </div>
+
+                        <div class="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.249725363813!2d29.258770975736375!3d37.80761927197713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c723abcd279f81%3A0x68e5ae84e56a926d!2sMerFabric!5e0!3m2!1str!2str!4v1756988427156!5m2!1str!2str"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                width="100%" height="100%" style="border:0;" loading="lazy">
+                            </iframe>
+                        </div>
+
+                        <div class="working-hours">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Friday: 08:00 - 18:00<br>Saturday: 08:00 - 12:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <a href="#home" class="logo">
+                        <span class="logo-text-yellow">Mer</span>
+                        <span class="logo-text-orange">Fabric</span>
+                        <span class="logo-registered">®</span>
+                    </a>
+                    <p>Express your style with quality fabrics.</p>
+                    <div class="social-links">
+
+                        <a href="https://www.linkedin.com/company/merfabric/posts/?feedView=all"
+                            aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#certificates">certificates</a></li>
+                        <li><a href="#news">news</a></li>
+                        <li><a href="#contact">contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-products">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">Cotton</a></li>
+                        <li><a href="#products">Polyester Blend</a></li>
+                        <li><a href="#products">Linen</a></li>
+                        <li><a href="#products">Lyocell</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <div class="contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <p>Osb Mah. Tanju Beştaş Cad. No:15/1, Honaz, Denizli</p>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="phone"></i>
+                        <a href="tel:+902582692820">+90 258 269 28 20</a>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail"></i>
+                        <a href="mailto:merfabric@textile.com">MerFabric@textile.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MerFabric. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">cookie policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Yukarı çık">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        lucide.createIcons();
+        $('.news-grid').owlCarousel({
+            items: 3,
+            margin: 10,
+            nav: false,
+
+        })
+    </script>
+</body>
