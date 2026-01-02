@@ -1,1550 +1,662 @@
-/* Base styles */
-:root {
-    --color-orange-50: #FFF7ED;
-    --color-orange-100: #FFEDD5;
-    --color-orange-200: #FED7AA;
-    --color-orange-300: #FDBA74;
-    --color-orange-400: #FB923C;
-    --color-orange-500: #F97316;
-    --color-orange-600: #EA580C;
-    --color-orange-700: #C2410C;
-    --color-orange-800: #9A3412;
-    --color-orange-900: #7C2D12;
+// Products data
+const products = [
+    {
+        id: 1,
+        name: 'Cotton Fabric',
+        category: 'cotton',
+        image: 'foto/baskılı pamuk kumaş.jpg',
+        
+        colors: ['#FFFFFF', '#F8F8F8', '#E0E0E0'],
+        inStock: true
+    },
+    {
+        id: 2,
+        name: 'Lyocell Fabric',
+        category: 'Lyocell',
+        image: 'foto/Lyocell.jpg',
+       
+        colors: ['#F5A623', '#D0021B', '#4A90E2'],
+        inStock: true
+    },
+    {
+        id: 3,
+        name: 'Natural Linen Blend',
+        category: 'linen',
+        image: 'foto/image.jpg',
+        
+        colors: ['#F5DEB3', '#D2B48C', '#8B4513'],
+        inStock: true
+    },
+    {
+        id: 4,
+        name: 'Polyester Blend Fabric',
+        category: 'polyester',
+        image: 'foto/cotton-polyester.jpg',
+        
+        colors: ['#000000', '#333333', '#666666'],
+        inStock: false
+    },
+    {
+        id: 5,
+        name: 'Linen Fabric',
+        category: 'linen',
+        image: 'foto/Linen.jpg',
+        
+        colors: ['#808080', '#A52A2A', '#000080'],
+        inStock: true
+    },
+    {
+        id: 6,
+        name: 'Organic Cotton Jersey',
+        category: 'cotton',
+        image: 'foto/Ipek-Desenli-Saten-Kumas-2.jpg',
+        
+        colors: ['#FFFFFF', '#FFC0CB', '#ADD8E6'],
+        inStock: true
+    } ,
+];
 
-    --color-yellow-50: #FEFCE8;
-    --color-yellow-100: #FEF9C3;
-    --color-yellow-200: #FEF08A;
-    --color-yellow-300: #FDE047;
-    --color-yellow-400: #FACC15;
-    --color-yellow-500: #EAB308;
-    --color-yellow-600: #CA8A04;
-    --color-yellow-700: #A16207;
-    --color-yellow-800: #854D0E;
-    --color-yellow-900: #713F12;
+// Testimonials data
+// const testimonials = [
+//     {
+//         name: 'Mehmet Yılmaz',
+//         company: 'Fashion House Istanbul',
+//         image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         quote: 'TexTile ile 5 yılı aşkın süredir çalışıyoruz. Kumaşlarının kalitesi ve hizmet anlayışları her zaman beklentilerimizin üzerinde. Sürekli yenilenen koleksiyonları ve trend renkleriyle bize ilham kaynağı oluyorlar.'
+//     },
+//     {
+//         name: 'Sophie Miller',
+//         company: 'EuroStyle Clothing',
+//         image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         quote: 'TexTile\'ın sürdürülebilir ve çevre dostu kumaşları, markamızın etik değerleriyle mükemmel bir şekilde örtüşüyor. Zamanında teslimatları ve kalite standartları ile her zaman güvenilir bir iş ortağı olmuşlardır.'
+//     },
+//     {
+//         name: 'Ali Demir',
+//         company: 'DecoHome Textiles',
+//         image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+//         quote: 'Ev tekstili koleksiyonumuz için gereken tüm kumaşları TexTile\'dan temin ediyoruz. Geniş renk ve desen yelpazesi, kaliteli ürünleri ve profesyonel yaklaşımları ile sektörün en iyileri arasındalar.'
+//     }
+// ];
 
-    --color-gray-50: #F9FAFB;
-    --color-gray-100: #F3F4F6;
-    --color-gray-200: #E5E7EB;
-    --color-gray-300: #D1D5DB;
-    --color-gray-400: #9CA3AF;
-    --color-gray-500: #6B7280;
-    --color-gray-600: #4B5563;
-    --color-gray-700: #374151;
-    --color-gray-800: #1F2937;
-    --color-gray-900: #111827;
+// Header scroll effect
+const header = document.querySelector('.header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    const icon = menuToggle.querySelector('i');
+    if (mobileMenu.classList.contains('active')) {
+        icon.setAttribute('data-lucide', 'x');
+    } else {
+        icon.setAttribute('data-lucide', 'menu');
+    }
+    lucide.createIcons();
+});
+
+// Products grid
+const productsGrid = document.getElementById('productsGrid');
+const categoryButtons = document.querySelectorAll('.category-btn');
+
+function createProductCard(product) {
+    return `
+        <div class="product-card">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-overlay">
+                    <button class="product-action">
+                        <i data-lucide="eye"></i>
+                    </button>
+                </div>
+                
+            </div>
+            <div class="product-info">
+                <div class="product-category">${product.category}</div>
+                <h3 class="product-name">${product.name}</h3>
+ 
+            </div>
+        </div>
+    `;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+function createProductCard(product) {
+    return `
+        <div class="product-card">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-overlay">
+                    <button class="product-action" onclick="openImageModal('${product.image}')">
+                        <i data-lucide="eye"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-category">${product.category}</div>
+                <h3 class="product-name">${product.name}</h3>
+            </div>
+        </div>
+    `;
 }
 
-html {
-    scroll-behavior: smooth;
+function openImageModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-    color: #1F2937;
+// Kapatma
+document.querySelector(".close").onclick = function() {
+    document.getElementById("imageModal").style.display = "none";
+};
+
+// Modal boş alana tıklanınca kapansın
+window.onclick = function(event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
+//teams
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize animations and interactions
+    initScrollAnimations();
+    initCardInteractions();
+    // initSocialLinks();
+    initParallaxEffect();
+});
+
+// Scroll animations for team cards
+function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }, index * 100);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    const teamCards = document.querySelectorAll('.team-card');
+    teamCards.forEach(card => {
+        observer.observe(card);
+    });
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Playfair Display', serif;
+// Enhanced card interactions
+function initCardInteractions() {
+    const teamCards = document.querySelectorAll('.team-card');
+    
+    teamCards.forEach(card => {
+        const cardImage = card.querySelector('.card-image img');
+        const cardOverlay = card.querySelector('.card-overlay');
+        const socialLinks = card.querySelector('.social-links');
+        
+        card.addEventListener('mouseenter', function() {
+            // Add glowing effect
+            this.style.boxShadow = '0 25px 50px rgba(102, 126, 234, 0.3)';
+            
+            // Animate social links individually
+            const links = socialLinks.querySelectorAll('.social-link');
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.transform = 'scale(1) translateY(0)';
+                    link.style.opacity = '1';
+                }, index * 100);
+            });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            
+            const links = socialLinks.querySelectorAll('.social-link');
+            links.forEach(link => {
+                link.style.transform = 'scale(0.8) translateY(10px)';
+                link.style.opacity = '0';
+            });
+        });
+        
+        // Add click ripple effect
+        card.addEventListener('click', function(e) {
+            createRipple(e, this);
+        });
+    });
 }
 
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
+// Social links functionality
+// function initSocialLinks() {
+//     const socialLinks = document.querySelectorAll('.social-link');
+    
+//     socialLinks.forEach(link => {
+//         link.addEventListener('click', function(e) {
+//             e.preventDefault();
+//             e.stopPropagation();
+            
+//             // Add click animation
+//             this.style.transform = 'scale(0.95)';
+//             setTimeout(() => {
+//                 this.style.transform = 'scale(1.1)';
+//             }, 100);
+            
+//             // Get the icon type and handle accordingly
+//             // const icon = this.querySelector('i');
+//             // if (icon.classList.contains('fa-linkedin')) {
+//                 // handleLinkedInClick(this);
+//             // } else if (icon.classList.contains('fa-envelope')) {
+//                 // handleEmailClick(this);
+//             // }
+//         });
+        
+//         // Initialize social links with animation delay
+//         link.style.transform = 'scale(0.8) translateY(10px)';
+//         link.style.opacity = '0';
+//         link.style.transition = 'all 0.3s ease';
+//     });
+// }
+
+// Handle LinkedIn click
+function handleLinkedInClick(element) {
+    const memberName = element.closest('.team-card').querySelector('.member-name').textContent;
+    console.log(`LinkedIn profili açılıyor: ${memberName}`);
+    
+    // Show notification
+    showNotification(`${memberName} LinkedIn profiline yönlendiriliyorsunuz...`, 'info');
+    
+    // Here you would typically open the actual LinkedIn profile
+    // window.open('https://linkedin.com/in/profile-url', '_blank');
 }
 
-/*teamss*/
-.teams-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
+// Handle email click
+function handleEmailClick(element) {
+    const memberName = element.closest('.team-card').querySelector('.member-name').textContent;
+    const position = element.closest('.team-card').querySelector('.member-position').textContent;
+    
+    const email = generateEmail(memberName);
+    const subject = `${position} ile İletişim`;
+    const body = `Merhaba ${memberName},\n\nSizinle iletişime geçmek istiyorum.\n\nİyi çalışmalar,`;
+    
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    
+    showNotification(`${memberName} ile e-posta başlatılıyor...`, 'success');
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    animation: fadeInUp 1s ease-out;
+// Generate email from name (example function)
+function generateEmail(name) {
+    return name.toLowerCase()
+        .replace('ç', 'c')
+        .replace('ğ', 'g')
+        .replace('ı', 'i')
+        .replace('ö', 'o')
+        .replace('ş', 's')
+        .replace('ü', 'u')
+        .replace(' ', '.')
+        + '@tekstilfirması.com';
 }
 
-.section-title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    position: relative;
+// Parallax effect for section background
+function initParallaxEffect() {
+    const teamsSection = document.querySelector('.teams-section');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        
+        if (teamsSection) {
+            teamsSection.style.backgroundPositionY = -(scrolled * parallaxSpeed) + 'px';
+        }
+    });
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 2px;
+// Create ripple effect
+function createRipple(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    // Add ripple styles
+    ripple.style.position = 'absolute';
+    ripple.style.borderRadius = '50%';
+    ripple.style.background = 'rgba(102, 126, 234, 0.3)';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.animation = 'ripple-animation 0.6s ease-out';
+    ripple.style.pointerEvents = 'none';
+    
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
 }
 
-.section-subtitle {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
+// Add ripple animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple-animation {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Notification system
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+    
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    // Notification styles
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.right = '20px';
+    notification.style.background = type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db';
+    notification.style.color = 'white';
+    notification.style.padding = '15px 20px';
+    notification.style.borderRadius = '5px';
+    notification.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
+    notification.style.zIndex = '10000';
+    notification.style.fontSize = '14px';
+    notification.style.fontWeight = '500';
+    notification.style.transform = 'translateX(100%)';
+    notification.style.transition = 'transform 0.3s ease';
+    
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
 }
 
-.teams-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    animation: fadeIn 1.5s ease-out;
+// Smooth scrolling for any anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add loading animation
+window.addEventListener('load', function() {
+    const teamCards = document.querySelectorAll('.team-card');
+    teamCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('loaded');
+        }, index * 100);
+    });
+});
+//teams
+function filterProducts(category) {
+    const filteredProducts = category === 'all' 
+        ? products 
+        : products.filter(product => product.category === category);
+    
+    productsGrid.innerHTML = filteredProducts.map(createProductCard).join('');
+    lucide.createIcons();
 }
 
-.team-card {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: slideInUp 0.8s ease-out forwards;
-}
+categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        filterProducts(button.dataset.category);
+    });
+});
 
-.team-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
+// Initial products load
+filterProducts('all');
 
-.team-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
 
-.team-card:nth-child(3) {
-    animation-delay: 0.3s;
-}
+// Contact form
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    
+    // Simulate form submission
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Gönderiliyor...';
+    submitButton.disabled = true;
+    
+    setTimeout(() => {
+        contactForm.innerHTML = `
+            <div class="text-center py-12">
+                <div class="success-icon">
+                    <i data-lucide="send"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Teşekkürler!</h3>
+                <p class="text-gray-600">Mesajınız alındı. En kısa sürede size geri dönüş yapacağız.</p>
+            </div>
+        `;
+        lucide.createIcons();
+    }, 1500);
+});
+//certificates
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.certificates-track');
+    const cards = document.querySelectorAll('.certificate-card');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.querySelector('.arrow.prev');
+    const nextBtn = document.querySelector('.arrow.next');
+    
+    let currentIndex = 0;
+    const cardCount = cards.length;
+    let autoPlayInterval;
 
-.team-card:nth-child(4) {
-    animation-delay: 0.4s;
-}
-
-.team-card:nth-child(5) {
-    animation-delay: 0.5s;
-}
-
-.team-card:nth-child(6) {
-    animation-delay: 0.6s;
-}
-
-.team-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.card-image {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
-}
-
-.card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.4s ease;
-}
-
-.team-card:hover .card-image img {
-    transform: scale(1.1);
-}
-
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.team-card:hover .card-overlay {
-    opacity: 1;
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-}
-
-.team-card:hover .social-links {
-    transform: translateY(0);
-}
-
-.social-link {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.social-link:hover {
-    background: white;
-    color: #667eea;
-    transform: scale(1.1);
-}
-
-.card-content {
-    padding: 30px;
-    text-align: center;
-}
-
-.member-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 8px;
-}
-
-.member-position {
-    font-size: 1.1rem;
-    color: #667eea;
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.member-description {
-    color: #666;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+    // PDF açma işlevi
+    // cards.forEach(card => {
+    //     card.addEventListener('click', () => {
+    //         const pdfUrl = card.getAttribute('data-pdf');
+    //         if (pdfUrl) {
+    //             window.open(pdfUrl, '_blank');
+    //         }
+    //     });
+    // });
+    
+    // Slider'ı güncelleme fonksiyonu
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Aktif noktayı güncelle
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Sonraki slayt
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % cardCount;
+        updateSlider();
+    }
+    
+    // Önceki slayt
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+        updateSlider();
+    }
+    
+    // Otomatik kaydırma başlat
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 2000); // 3 saniyede bir geçiş
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+    // Otomatik kaydırmayı durdur
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
     }
 
-    to {
-        opacity: 1;
+    // Olay dinleyicileri
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoPlay();
+        startAutoPlay(); // butona basınca yeniden başlat
+    });
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoPlay();
+        startAutoPlay();
+    });
+    
+    // Nokta tıklamaları
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+            stopAutoPlay();
+            startAutoPlay();
+        });
+    });
+
+    // Başlangıç
+    updateSlider();
+    startAutoPlay();
+});
+
+
+
+
+// Scroll to top button
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
     }
-}
+});
 
-@keyframes slideInUp {
-    to {
-        transform: translateY(0);
-        opacity: 1;
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// 1. Yerelleştirme dosyalarını yükle
+fetch('./lang.json')
+  .then(response => response.json())
+  .then(translations => {
+    // 2. Kullanıcının dilini belirle
+    // Varsayılan dil 'tr' olsun, veya tarayıcı diline bakılabilir.
+    const userLanguage = 'en'; 
+
+    console.log(translations );
+
+    // 3. HTML elemanlarını seç ve metinlerini güncelle
+    document.querySelectorAll('[data-key]').forEach(element => {
+      const key = element.getAttribute('data-key');
+      // translation dosyasında ilgili dile ve anahtara ait metni bul
+      element.textContent = translations[userLanguage][key];
+    });
+  })
+  .catch(error => console.error('Hata:', error));
+
+  // Dropdown'ı bir arada tutan kapsayıcı
+const dropdownContainer = document.querySelector('.language-dropdown-container');
+
+// Dil değiştirme butonu
+const languageToggleBtn = document.getElementById('languageToggle');
+
+// Dil metnini gösteren span
+const languageTextSpan = document.getElementById('language-text');
+
+// Dil seçeneklerinin tamamı
+const langOptions = document.querySelectorAll('.lang-option');
+
+// Butona tıklama olayını dinliyoruz
+languageToggleBtn.addEventListener('click', (event) => {
+    // Dropdown kapsayıcısına "open" sınıfını ekleyip çıkararak menüyü gösterip gizle
+    dropdownContainer.classList.toggle('open');
+    event.stopPropagation(); // Tıklamanın butonda kalmasını sağlar
+});
+
+// Sayfanın herhangi bir yerine tıklayınca menüyü kapat
+document.addEventListener('click', (event) => {
+    if (!dropdownContainer.contains(event.target)) {
+        dropdownContainer.classList.remove('open');
     }
+});
+
+// Her bir dil seçeneğine tıklama olayını dinle
+langOptions.forEach(option => {
+    option.addEventListener('click', (event) => {
+        event.preventDefault(); // Varsayılan bağlantı davranışını engelle
+        const newLanguage = option.getAttribute('data-lang');
+        
+        // Dil metnini ve sayfanın genel dilini güncelle
+        languageTextSpan.textContent = newLanguage.toUpperCase();
+        document.documentElement.lang = newLanguage;
+        
+        // JSON dosyasından metinleri çekip içeriği güncelle
+        updateContent(newLanguage);
+        
+        // Menüyü kapat
+        dropdownContainer.classList.remove('open');
+    });
+});
+
+// JSON dosyasından metinleri çeken fonksiyon
+// (Daha önceki cevaptan alıntıdır)
+function updateContent(language) {
+    fetch('./lang.json')
+        .then(response => response.json())
+        .then(translations => {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[language] && translations[language][key]) {
+                    element.textContent = translations[language][key];
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching or parsing language file:', error));
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .teams-section {
-        padding: 60px 0;
-    }
-
-    .section-title {
-        font-size: 2.2rem;
-    }
-
-    .section-subtitle {
-        font-size: 1rem;
-    }
-
-    .teams-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .team-card {
-        margin: 0 10px;
-    }
-
-    .card-image {
-        height: 250px;
-    }
-
-    .card-content {
-        padding: 25px 20px;
-    }
-
-    .member-name {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .teams-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .team-card {
-        border-radius: 15px;
-    }
-
-    .card-content {
-        padding: 20px 15px;
-    }
-}
-
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: transparent;
-    transition: all 0.3s ease;
-    padding: 1rem 0;
-}
-
-.header.scrolled {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.9rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.logo-text-yellow {
-    color: var(--color-yellow-500);
-}
-
-.logo-text-orange {
-    color: var(--color-orange-500);
-}
-
-.logo-registered {
-    font-size: 0.75rem;
-    margin-left: 0.25rem;
-    color: #666;
-}
-
-.nav-desktop {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .nav-desktop {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-    }
-}
-
-.nav-link {
-    color: #4B5563;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--color-orange-500);
-}
-
-.language-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #4B5563;
-}
-
-.language-toggle:hover {
-    color: var(--color-orange-500);
-}
-
-.nav-mobile {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-@media (min-width: 768px) {
-    .nav-mobile {
-        display: none;
-    }
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #4B5563;
-}
-
-.mobile-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-menu.active {
-    display: block;
-}
-
-.mobile-menu .nav-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    border-radius: 0.375rem;
-}
-
-/* Certificates Section */
-.certificates {
-    padding: 5rem 0;
-    background-color: white;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.certificates h2 {
-    text-align: center;
-    font-size: 2.25rem;
-    color: var(--color-orange-600);
-    margin-bottom: 1rem;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--color-gray-600);
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.certificates-slider {
-    position: relative;
-    max-width: 600px;
-    margin: 3rem auto;
-    overflow: hidden;
-}
-
-.certificates-track {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.certificate-card {
-    flex: 0 0 100%;
-    background: white;
-    border-radius: 0.75rem;
-    padding: 2.5rem;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    cursor: pointer;
-}
-
-.certificate-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15);
-    border-color: var(--color-orange-200);
-}
-
-.certificate-icon {
-    width: 5rem;
-    height: 5rem;
-    background: linear-gradient(135deg, var(--color-orange-400), var(--color-yellow-400));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: white;
-    font-size: 2rem;
-}
-
-.certificate-card h3 {
-    font-size: 1.5rem;
-    color: var(--color-gray-800);
-    margin-bottom: 1rem;
-}
-
-.certificate-card p {
-    color: var(--color-gray-600);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.slider-nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 0.5rem;
-}
-
-.slider-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--color-orange-200);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.slider-dot.active {
-    background-color: var(--color-orange-600);
-}
-
-.slider-arrows {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    gap: 1rem;
-}
-
-.arrow {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--color-orange-400);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.5rem;
-
-}
-
-.arrow:hover {
-    background: var(--color-orange-600);
-    transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    .certificate-card {
-        padding: 1.5rem;
-    }
-
-    .certificate-icon {
-        width: 4rem;
-        height: 4rem;
-        font-size: 1.5rem;
-    }
-}
-
-
-
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    background-image: url('https://images.pexels.com/photos/6192554/pexels-photo-6192554.jpeg?auto=compress&cs=tinysrgb&w=1600');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 2rem 0;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    color: white;
-    max-width: 48rem;
-    margin: 0 auto;
-    padding: 0 1rem;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-}
-
-.hero p {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 3rem;
-}
-
-.scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-10px);
-    }
-
-    60% {
-        transform: translateY(-5px);
-    }
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background-color: var(--color-orange-500);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: var(--color-orange-600);
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    border: 2px solid var(--color-yellow-400);
-    color: var(--color-yellow-400);
-}
-
-.btn-outline:hover {
-    background-color: var(--color-yellow-400);
-    color: #1F2937;
-    transform: translateY(-2px);
-}
-
-.btn-white {
-    background-color: white;
-    color: var(--color-orange-600);
-}
-
-.btn-white:hover {
-    background-color: var(--color-orange-50);
-    transform: translateY(-2px);
-}
-
-/* Products Section */
-.products {
-    padding: 5rem 0;
-    background-color: var(--color-gray-50);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.25rem;
-    color: var(--color-orange-600);
-    margin-bottom: 1rem;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: #6B7280;
-    max-width: 36rem;
-    margin: 0 auto 3rem;
-}
-
-.category-filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 3rem;
-}
-
-.category-btn {
-    padding: 0.5rem 1rem;
-    border-radius: 9999px;
-    border: none;
-    background: white;
-    color: #4B5563;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.category-btn:hover {
-    background-color: #F3F4F6;
-}
-
-.category-btn.active {
-    background-color: var(--color-orange-500);
-    color: white;
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.product-card {
-    background: white;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.product-image {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.product-card:hover .product-image img {
-    transform: scale(1.1);
-}
-
-.product-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.product-card:hover .product-overlay {
-    opacity: 1;
-}
-
-.product-action {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 9999px;
-    background: white;
-    color: #1F2937;
-    display: flex;
-    align-items: center;
-
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.product-action:hover {
-    background-color: var(--color-orange-500);
-    color: white;
-}
-
-.product-info {
-    padding: 1rem;
-}
-
-.product-category {
-    font-size: 0.875rem;
-    color: #6B7280;
-}
-
-.product-name {
-    font-weight: 500;
-    margin: 0.5rem 0;
-}
-
-.product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.product-price {
-    font-weight: 600;
-    color: var(--color-orange-600);
-}
-
-.product-colors {
-    display: flex;
-    gap: 0.25rem;
-}
-
-.color-option {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.color-option:hover {
-    transform: scale(1.2);
-}
-
-.color-option.selected {
-    outline: 2px solid var(--color-orange-500);
-    outline-offset: 2px;
-}
-
-/* Modal kaplama */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* İçerideki resim */
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-  border-radius: 0.5rem;
-}
-
-/* Kapatma butonu */
-.close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-
-/* About Section */
-.about {
-    padding: 5rem 0;
-    background-color: white;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-}
-
-@media (min-width: 768px) {
-    .about-grid {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-    }
-}
-
-.about-image {
-    position: relative;
-}
-
-.link {
-  color: orangered;              /* Normalde siyah */
-  text-decoration: none;     /* Alt çizgiyi kaldırır */
-  font-size: 18px;           /* Yazı boyutu */
-  font-weight: bold;}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.about-content h2 {
-    margin-bottom: 1.5rem;
-}
-
-.about-content p {
-    color: #6B7280;
-    margin-bottom: 1.5rem;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.stat-card {
-    background-color: #F9FAFB;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    text-align: center;
-}
-
-.stat-card i {
-    margin-bottom: 0.5rem;
-}
-
-.stat-value {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-orange-600);
-}
-
-.stat-label {
-    font-size: 0.875rem;
-    color: #6B7280;
-}
-
-/* Services Section */
-.services {
-    padding: 5rem 0;
-    background-color: var(--color-orange-50);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.service-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.service-card i {
-    margin-bottom: 1rem;
-}
-
-.service-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-}
-
-.service-card p {
-    color: #6B7280;
-}
-
-.cta-box {
-    background: linear-gradient(to right, var(--color-orange-500), var(--color-yellow-500));
-    padding: 3rem 2rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    color: white;
-}
-
-.cta-box h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.cta-box p {
-    margin-bottom: 2rem;
-    max-width: 36rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* News Section */
-.news {
-    padding: 5rem 0;
-    background-color: var(--color-gray-800);
-    color: white;
-}
-
-.news h2 {
-    color: var(--color-yellow-400);
-    text-align: center;
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-}
-
-.news .section-subtitle {
-    color: var(--color-gray-300);
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.news-card {
-    background-color: var(--color-gray-700);
-    border-radius: 0.75rem;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    height: 485px;
-}
-
-.news-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
-
-.news-image {
-    height: 200px;
-    overflow: hidden;
-}
-
-.news-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.news-card:hover .news-image img {
-    transform: scale(1.1);
-}
-
-.news-content {
-    padding: 1.5rem;
-}
-
-.news-date {
-    color: var(--color-orange-400);
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-.news-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: white;
-}
-
-.news-excerpt {
-    color: var(--color-gray-300);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-}
-
-.news-link {
-    color: var(--color-yellow-400);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.2s ease;
-}
-
-.news-link:hover {
-    color: var(--color-yellow-300);
-}
-
-/* Testimonials Section */
-.testimonials {
-    padding: 5rem 0;
-    background-color: #1F2937;
-    color: white;
-}
-
-.testimonials h2 {
-    color: var(--color-yellow-400);
-}
-
-.testimonials .section-subtitle {
-    color: #9CA3AF;
-}
-
-.testimonials-slider {
-    max-width: 48rem;
-    margin: 0 auto;
-}
-
-.testimonial {
-    background-color: #374151;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    display: none;
-}
-
-.testimonial.active {
-    display: block;
-}
-
-.stars {
-    display: flex;
-    justify-content: center;
-    gap: 0.25rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-yellow-400);
-}
-
-.testimonial blockquote {
-    font-size: 1.25rem;
-    font-style: italic;
-    margin-bottom: 2rem;
-}
-
-.testimonial-author {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.author-image {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 9999px;
-    margin-bottom: 1rem;
-}
-
-.author-name {
-    color: var(--color-orange-400);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.author-company {
-    color: #9CA3AF;
-}
-
-.testimonial-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.control-btn {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 9999px;
-    transition: background-color 0.2s ease;
-}
-
-.control-btn:hover {
-    background-color: #374151;
-}
-
-.testimonial-indicators {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.indicator {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 9999px;
-    background-color: #4B5563;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.indicator.active {
-    background-color: var(--color-orange-500);
-}
-
-/* Contact Section */
-.contact {
-    padding: 5rem 0;
-    background-color: white;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-}
-
-@media (min-width: 768px) {
-    .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #4B5563;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #D1D5DB;
-    border-radius: 0.375rem;
-    transition: border-color 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-orange-500);
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.info-item {
-    display: flex;
-    gap: 1rem;
-}
-
-.info-item i {
-    color: var(--color-orange-500);
-}
-
-.info-item h3 {
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-}
-
-.info-item a {
-    color: #4B5563;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.info-item a:hover {
-    color: var(--color-orange-500);
-}
-
-.map {
-    height: 300px;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    margin: 2rem 0;
-}
-
-.working-hours {
-    background-color: var(--color-yellow-50);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    border-left: 4px solid var(--color-orange-500);
-}
-
-.working-hours h3 {
-    margin-bottom: 0.5rem;
-}
-
-/* Footer */
-.footer {
-    background-color: #1F2937;
-    color: white;
-    padding: 4rem 0 2rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.footer-info p {
-    color: #9CA3AF;
-    margin: 1rem 0;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links a {
-    color: #9CA3AF;
-    transition: color 0.2s ease;
-}
-
-.social-links a:hover {
-    color: white;
-}
-
-.footer h3 {
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-}
-
-.footer ul {
-    list-style: none;
-}
-
-.footer ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer ul a {
-    color: #9CA3AF;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer ul a:hover {
-    color: white;
-}
-
-.footer-contact .contact-item {
-    display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    color: #afaa9c;
-}
-
-.footer-bottom {
-    border-top: 1px solid #374151;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-}
-
-@media (min-width: 768px) {
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-    }
-}
-
-.footer-bottom p {
-    color: #9CA3AF;
-}
-
-.footer-bottom .footer-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.footer-bottom .footer-links a {
-    color: #9CA3AF;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer-bottom .footer-links a:hover {
-    color: white;
-}
-
-/* Scroll to Top Button */
-.scroll-to-top {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    background-color: var(--color-orange-500);
-    color: white;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.scroll-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.scroll-to-top:hover {
-    background-color: var(--color-orange-600);
-    transform: translateY(-2px);
-}
-
-/* Dropdown kapsayıcısını hizalamak için relative konumlandırma */
-.language-dropdown-container {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dil değiştirme butonu */
-.language-toggle {
-    cursor: pointer;
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-}
-
-/* Dropdown menüsü */
-.language-dropdown-menu {
-    display: none; /* Menüyü varsayılan olarak gizle */
-    position: absolute;
-    top: 100%; /* Butonun hemen altına gelsin */
-    left: 0;
-    z-index: 1000;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    min-width: 120px;
-    padding: 8px 0;
-}
-
-/* Menü açıkken göster */
-.language-dropdown-container.open .language-dropdown-menu {
-    display: block;
-}
-
-/* Dropdown içindeki dil seçenekleri */
-.lang-option {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #333;
-}
-
-.lang-option:hover {
-    background-color: #f0f0f0;
-}
